@@ -1,10 +1,15 @@
+package calculator;
+
+import basicCalculator.BasicCalculator;
+import exceptionHandling.InvalidInputException;
+
 import java.util.ArrayList;
 
-public class Calculator extends BasicCalculator{
+public class Calculator extends BasicCalculator {
 
 
     @Override
-    public double addition(ArrayList<Double> list) throws InvalidInputException{
+    public double addition(ArrayList<Double> list) throws InvalidInputException {
         if(list.size()<2){
             throw new InvalidInputException("Please enter atleast two numbers to perform addition.");
         }
@@ -16,7 +21,7 @@ public class Calculator extends BasicCalculator{
     }
 
     @Override
-    public double substract(ArrayList<Double> list) throws InvalidInputException{
+    public double substract(ArrayList<Double> list) throws InvalidInputException {
 
         if(list.size()<2){
             throw new InvalidInputException("Please enter atleast two numbers to perform substraction");
@@ -31,7 +36,7 @@ public class Calculator extends BasicCalculator{
     }
 
     @Override
-    public double multiply(ArrayList<Double> list) throws InvalidInputException{
+    public double multiply(ArrayList<Double> list) throws InvalidInputException {
 
         if(list.size()<2){
             throw new InvalidInputException("Please enter atleast two numbers to perform multiply");

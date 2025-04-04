@@ -1,3 +1,7 @@
+
+import calculator.Calculator;
+import exceptionHandling.InvalidInputException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,19 +17,17 @@ public class BasicCalculatorApp {
 
         int n = scanner.nextInt();
 
-       // double[] arr = new double[n];
+        // double[] arr = new double[n];
         ArrayList<Double> list = new ArrayList(n);
 
         System.out.println("Enter the numbers");
 
         for(int i=0; i<n; i++){
-           // arr[i] = scanner.nextDouble();
+            // arr[i] = scanner.nextDouble();
             list.add(scanner.nextDouble());
         }
 
-        if(list.size()>2){
-            System.out.println("Warning: Subtracting more than 2 numbers may result in negative values!");
-        }
+
 
         System.out.println("Press 1 for addition " +" 2 for substraction " + " 3 for multiply " + " 4 for divison ");
 
@@ -44,12 +46,21 @@ public class BasicCalculatorApp {
                     System.out.println("Error: " + e.getMessage() );
                 }
             case 2:
-                try {
-                    System.out.println("Result:" + calculator.substract(list));
-                    break;
+                if(list.size()>2){
+                    System.out.println("Warning: Subtracting more than 2 numbers may result in negative values!");
                 }
-                catch (InvalidInputException e){
-                    System.out.println("Error: "+e.getMessage());
+                System.out.println("Do you wish to continue: Y/N");
+                char choice = scanner.next().charAt(0);
+                if(choice == 'Y') {
+                    try {
+                        System.out.println("Result:" + calculator.substract(list));
+                        break;
+                    } catch (InvalidInputException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                }
+                else{
+                    break;
                 }
             case 3:
                 try{
@@ -74,3 +85,4 @@ public class BasicCalculatorApp {
         }
     }
 }
+
